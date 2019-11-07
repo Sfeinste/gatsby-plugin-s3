@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-plugin-s3",
-  "version": "0.3.2",
+  "name": "@sfeinste/gatsby-plugin-s3",
+  "version": "0.3.3",
   "description": "Enables you to deploy your gatsby site to a S3 bucket.",
   "main": "bin.js",
   "bin": "bin.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jariz/gatsby-plugin-s3.git"
+    "url": "git+https://github.com/sfeinste/gatsby-plugin-s3.git"
   },
   "keywords": [
     "gatsby",
@@ -59,9 +59,9 @@
   "author": "Jari Zwarts <jarizw@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jariz/gatsby-plugin-s3/issues"
+    "url": "https://github.com/sfeinste/gatsby-plugin-s3/issues"
   },
-  "homepage": "https://github.com/jariz/gatsby-plugin-s3#readme",
+  "homepage": "https://github.com/sfeinste/gatsby-plugin-s3#readme",
   "dependencies": {
     "@types/async": "^2.4.1",
     "@types/jest": "^24.0.0",

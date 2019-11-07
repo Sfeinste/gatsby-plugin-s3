@@ -2,7 +2,7 @@ import { CACHING_PARAMS, DEFAULT_OPTIONS, Params, PluginOptions } from './consta
 import fs from 'fs';
 import path from 'path';
 import { RoutingRule, RoutingRules } from 'aws-sdk/clients/s3';
-import { withoutLeadingSlash, withoutTrailingSlash } from './util';
+import { withoutTrailingSlash, withoutLeadingSlash } from './util';
 
 // for whatever reason, the keys of the RoutingRules object in the SDK and the actual API differ.
 // so we have a separate object with those differing keys which we can throw into the sls config.
@@ -16,10 +16,10 @@ interface ServerlessRoutingRule {
 const getRules = (pluginOptions: PluginOptions, routes: GatsbyRedirect[]): RoutingRules => (
     routes.map(route => ({
         Condition: {
-            KeyPrefixEquals: route.fromPath,
+            KeyPrefixEquals: withoutTrailingSlash(route.fromPath),
         },
         Redirect: {
-            ReplaceKeyWith: route.toPath,
+            ReplaceKeyWith: withoutTrailingSlash(withoutLeadingSlash(route.toPath)),
             HttpRedirectCode: route.isPermanent ? '301' : '302',
             Protocol: pluginOptions.protocol,
             HostName: pluginOptions.hostname,
