@@ -16,11 +16,10 @@ interface ServerlessRoutingRule {
 const getRules = (pluginOptions: PluginOptions, routes: GatsbyRedirect[]): RoutingRules => (
     routes.map(route => ({
         Condition: {
-            KeyPrefixEquals: withoutLeadingSlash(route.fromPath),
-            HttpErrorCodeReturnedEquals: '404',
+            KeyPrefixEquals: route.fromPath,
         },
         Redirect: {
-            ReplaceKeyWith: withoutTrailingSlash(withoutLeadingSlash(route.toPath)),
+            ReplaceKeyWith: route.toPath,
             HttpRedirectCode: route.isPermanent ? '301' : '302',
             Protocol: pluginOptions.protocol,
             HostName: pluginOptions.hostname,
